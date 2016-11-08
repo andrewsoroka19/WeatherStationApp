@@ -47,36 +47,36 @@ NSString * const weatherBaseURL = @"http://www.metoffice.gov.uk/pub/data/weather
          }];
 }
 
-+ (void)fetchWeatherHistoryInfo:(NSString *)stationNamen withHandler:(WeatherHistoryFetchCompletion)handler {
-    if (!handler) {
-        return;
-    }
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSString *urlString = [weatherBaseURL stringByAppendingString:stationNamen];
-    
-    [manager GET:urlString parameters: nil progress: nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject isKindOfClass:NSDictionary.class] == NO) {
-            handler(nil);
-            return;
-        }
-        NSArray *results = responseObject[@"articles"];
-        NSMutableArray *weatherInfo = [NSMutableArray array];
-        for (NSDictionary *dictionary in results) {
-            ASWeatherHistory *weather = [[ASWeatherHistory alloc] init];
-            if (weatherInfo) {
-                [weatherInfo addObject:weather];
-            }
-        }
-        handler(weatherInfo);
-    }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             NSLog(@"Error : %@", error.description);
-             handler(nil);
-         }];
-}
+//+ (void)fetchWeatherHistoryInfo:(NSString *)stationNamen withHandler:(WeatherHistoryFetchCompletion)handler {
+//    if (!handler) {
+//        return;
+//    }
+//    
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSString *urlString = [weatherBaseURL stringByAppendingString:stationNamen];
+//    
+//    [manager GET:urlString parameters: nil progress: nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if ([responseObject isKindOfClass:NSDictionary.class] == NO) {
+//            handler(nil);
+//            return;
+//        }
+//        NSArray *results = responseObject[@"articles"];
+//        NSMutableArray *weatherInfo = [NSMutableArray array];
+//        for (NSDictionary *dictionary in results) {
+//            ASWeatherHistory *weather = [[ASWeatherHistory alloc] init];
+//            if (weatherInfo) {
+//                [weatherInfo addObject:weather];
+//            }
+//        }
+//        handler(weatherInfo);
+//    }
+//         failure:^(NSURLSessionDataTask *task, NSError *error) {
+//             NSLog(@"Error : %@", error.description);
+//             handler(nil);
+//         }];
+//}
 
 
 
