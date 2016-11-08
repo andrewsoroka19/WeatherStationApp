@@ -68,12 +68,20 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ASStation *selectedStation = self.stations[indexPath.row];
 //    [self loadWeatherInfo:selectedStation];
 }
 
+- (UIActivityIndicatorView *)activity {
+    if (!_activity) {
+        _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+        CGSize tableSize = self.tableView.bounds.size;
+        _activity.center = CGPointMake(tableSize.width / 2, 25);
+        [self.tableView addSubview:_activity];
+    }
+    return _activity;
+}
 
 
 @end
