@@ -27,15 +27,9 @@ NSString * const weatherBaseURL = @"http://www.metoffice.gov.uk/pub/data/weather
             handler(nil);
             return;
         }
-        NSArray *results = responseObject[@"resources"];
-        NSMutableArray *sources = [NSMutableArray array];
-        for (NSDictionary *dictionary in results) {
-            ASStation *station = [[ASStation alloc] initWithDictionary:dictionary];
-            if (station) {
-                [sources addObject:station];
-            }
-        }
-        handler(sources);
+        
+        ASStationResponse *response = [[ASStationResponse alloc] initWithDictionary:responseObject];
+        handler(response);
     }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
              NSLog(@"Error : %@", error.localizedDescription);
@@ -47,36 +41,28 @@ NSString * const weatherBaseURL = @"http://www.metoffice.gov.uk/pub/data/weather
          }];
 }
 
-//+ (void)fetchWeatherHistoryInfo:(NSString *)stationNamen withHandler:(WeatherHistoryFetchCompletion)handler {
-//    if (!handler) {
-//        return;
-//    }
-//    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    
-//    NSString *urlString = [weatherBaseURL stringByAppendingString:stationNamen];
-//    
-//    [manager GET:urlString parameters: nil progress: nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if ([responseObject isKindOfClass:NSDictionary.class] == NO) {
-//            handler(nil);
-//            return;
-//        }
-//        NSArray *results = responseObject[@"articles"];
-//        NSMutableArray *weatherInfo = [NSMutableArray array];
-//        for (NSDictionary *dictionary in results) {
-//            ASWeatherHistory *weather = [[ASWeatherHistory alloc] init];
-//            if (weatherInfo) {
-//                [weatherInfo addObject:weather];
-//            }
-//        }
-//        handler(weatherInfo);
-//    }
-//         failure:^(NSURLSessionDataTask *task, NSError *error) {
-//             NSLog(@"Error : %@", error.description);
-//             handler(nil);
-//         }];
-//}
++ (void)fetchWeatherHistoryInfo:(NSString *)stationNamen withHandler:(WeatherHistoryFetchCompletion)handler {
+    if (!handler) {
+        return;
+    }
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:[weatherBaseURL stringByAppendingString:stationNamen]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        NSData *data = [NSData dataWithContentsOfURL:filePath];
+        NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        handler(string);
+    }];
+    
+    [downloadTask resume];
+}
 
 
 

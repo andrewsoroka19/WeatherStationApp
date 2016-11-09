@@ -10,12 +10,13 @@
 #import "ASDownloadManager.h"
 #import "ASStation.h"
 #import "ASStationTableViewCell.h"
+#import "ASStationResponse.h"
+#import "ASTextViewController.h"
 
 @interface ASViewController ()
 
 @property (strong, nonatomic) UIActivityIndicatorView *activity;
 @property (strong, nonatomic) NSArray<ASStation *> *stations;
-
 
 @end
 
@@ -23,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self prepareTableView];
     [self loadStations];
 }
 
@@ -31,23 +31,14 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)prepareTableView {
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 76.0;
-}
-
-//- (void) loadWeatherInfo {
-//  load information about station's weather
-//}
-
-
 #pragma mark - Networking
 
 - (void)loadStations {
     [self.activity startAnimating];
     __weak typeof(self) weakSelf = self;
-    [ASDownloadManager fetchAllStations:^(NSArray<ASStation *> *stations) {
-        weakSelf.stations = stations;
+    [ASDownloadManager fetchAllStations:^(ASStationResponse *response) {
+        weakSelf.title = response.title;
+        weakSelf.stations = response.stations;
         [weakSelf.activity stopAnimating];
         weakSelf.activity.hidden = YES;
         [weakSelf.tableView reloadData];
@@ -70,7 +61,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ASStation *selectedStation = self.stations[indexPath.row];
-//    [self loadWeatherInfo:selectedStation];
+    
+    __weak typeof(self) weakSelf = self;
+    [ASDownloadManager fetchWeatherHistoryInfo:selectedStation.stationPath withHandler:^(NSString *historyString) {
+        ASTextViewController *textController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:[ASTextViewController identifier]];
+        textController.text = historyString;
+        [weakSelf.navigationController pushViewController:textController animated:YES];
+    }];
 }
 
 - (UIActivityIndicatorView *)activity {

@@ -10,7 +10,7 @@
 
 @interface ASStation : NSObject
 
-@property (strong,nonatomic) NSString *stationDescription;
+@property (strong, nonatomic) NSString *stationTitle;
 @property (strong, nonatomic) NSString *stationPath;
 
 - (ASStation *)initWithDictionary:(NSDictionary *)dictionary;

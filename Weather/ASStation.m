@@ -13,7 +13,13 @@
 - (ASStation *)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        self.stationDescription = dictionary[@"description"];
+        NSString *description = dictionary[@"description"];
+        if (description.length > 0) {
+            self.stationTitle = [description stringByReplacingOccurrencesOfString:@"Historical monthly data for meteorological station" withString:@""];
+        } else {
+            self.stationTitle = dictionary[@"description"];
+        }
+        
         self.stationPath = dictionary[@"path"];
     }
     return self;

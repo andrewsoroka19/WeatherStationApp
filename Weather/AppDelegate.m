@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UIFont *font = [UIFont systemFontOfSize:14];
+    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName : font};
+
     return YES;
 }
 

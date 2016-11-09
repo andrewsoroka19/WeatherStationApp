@@ -14,7 +14,6 @@
 @interface ASStationTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *documentImageView;
 
 @end
 
@@ -32,9 +31,7 @@
 
 - (void)setStation:(ASStation *)station {
     _station = station;
-    self.descriptionLabel.text = station.stationDescription;
-//    [self.documentImageView sd_setImageWithURL:@"http://www.freeiconspng.com/uploads/file-txt-icon--deepsea-blue-icons--softiconsm-2.png" placeholderImage:nil];
-
+    self.descriptionLabel.text = station.stationTitle;
 }
 
 @end

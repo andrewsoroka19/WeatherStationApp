@@ -10,6 +10,5 @@
 
 @interface ASViewController : UITableViewController
 
-
 @end
 

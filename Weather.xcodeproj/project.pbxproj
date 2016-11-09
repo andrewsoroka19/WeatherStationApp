@@ -17,10 +17,10 @@
 		495486E81DD0A48D00C10A6F /* WeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 495486E71DD0A48D00C10A6F /* WeatherUITests.m */; };
 		495486FC1DD0B24D00C10A6F /* ASDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495486FB1DD0B24D00C10A6F /* ASDownloadManager.m */; };
 		495486FF1DD0B70D00C10A6F /* ASStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 495486FE1DD0B70D00C10A6F /* ASStation.m */; };
-		495487031DD0BBCC00C10A6F /* ASWeatherHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 495487021DD0BBCC00C10A6F /* ASWeatherHistory.m */; };
 		495487061DD0E30700C10A6F /* ASStationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 495487051DD0E30700C10A6F /* ASStationTableViewCell.m */; };
-		49AAA1EF1DD22975008EB725 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AAA1EE1DD22975008EB725 /* 1.png */; };
 		4B28C8B44FD1BA407048BE48 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B5F81C27639EC2886C9555 /* libPods-Weather.a */; };
+		B1845E2F1DD309B600D34ACA /* ASStationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B1845E2E1DD309B600D34ACA /* ASStationResponse.m */; };
+		B1845E321DD312FF00D34ACA /* ASTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1845E311DD312FF00D34ACA /* ASTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,11 +63,12 @@
 		495486FB1DD0B24D00C10A6F /* ASDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDownloadManager.m; sourceTree = "<group>"; };
 		495486FD1DD0B70D00C10A6F /* ASStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStation.h; sourceTree = "<group>"; };
 		495486FE1DD0B70D00C10A6F /* ASStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStation.m; sourceTree = "<group>"; };
-		495487011DD0BBCC00C10A6F /* ASWeatherHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASWeatherHistory.h; sourceTree = "<group>"; };
-		495487021DD0BBCC00C10A6F /* ASWeatherHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASWeatherHistory.m; sourceTree = "<group>"; };
 		495487041DD0E30700C10A6F /* ASStationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStationTableViewCell.h; sourceTree = "<group>"; };
 		495487051DD0E30700C10A6F /* ASStationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStationTableViewCell.m; sourceTree = "<group>"; };
-		49AAA1EE1DD22975008EB725 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../../Downloads/1.png; sourceTree = "<group>"; };
+		B1845E2D1DD309B600D34ACA /* ASStationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStationResponse.h; sourceTree = "<group>"; };
+		B1845E2E1DD309B600D34ACA /* ASStationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStationResponse.m; sourceTree = "<group>"; };
+		B1845E301DD312FF00D34ACA /* ASTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTextViewController.h; sourceTree = "<group>"; };
+		B1845E311DD312FF00D34ACA /* ASTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTextViewController.m; sourceTree = "<group>"; };
 		B3FA80E63E5588D57E4EC711 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +141,6 @@
 		495486C21DD0A48D00C10A6F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49AAA1ED1DD2288E008EB725 /* Image */,
 				495486C31DD0A48D00C10A6F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -178,8 +178,8 @@
 			children = (
 				495486FD1DD0B70D00C10A6F /* ASStation.h */,
 				495486FE1DD0B70D00C10A6F /* ASStation.m */,
-				495487011DD0BBCC00C10A6F /* ASWeatherHistory.h */,
-				495487021DD0BBCC00C10A6F /* ASWeatherHistory.m */,
+				B1845E2D1DD309B600D34ACA /* ASStationResponse.h */,
+				B1845E2E1DD309B600D34ACA /* ASStationResponse.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -189,6 +189,8 @@
 			children = (
 				495486C81DD0A48D00C10A6F /* ASViewController.h */,
 				495486C91DD0A48D00C10A6F /* ASViewController.m */,
+				B1845E301DD312FF00D34ACA /* ASTextViewController.h */,
+				B1845E311DD312FF00D34ACA /* ASTextViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -200,14 +202,6 @@
 				495487051DD0E30700C10A6F /* ASStationTableViewCell.m */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		49AAA1ED1DD2288E008EB725 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				49AAA1EE1DD22975008EB725 /* 1.png */,
-			);
-			name = Image;
 			sourceTree = "<group>";
 		};
 		5B91E6262C7964203407AD05 /* Pods */ = {
@@ -297,6 +291,7 @@
 				TargetAttributes = {
 					495486BE1DD0A48D00C10A6F = {
 						CreatedOnToolsVersion = 7.3.1;
+						ProvisioningStyle = Automatic;
 					};
 					495486D71DD0A48D00C10A6F = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -334,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				495486D21DD0A48D00C10A6F /* LaunchScreen.storyboard in Resources */,
-				49AAA1EF1DD22975008EB725 /* 1.png in Resources */,
 				495486CF1DD0A48D00C10A6F /* Assets.xcassets in Resources */,
 				495486CD1DD0A48D00C10A6F /* Main.storyboard in Resources */,
 			);
@@ -412,8 +406,9 @@
 				495486CA1DD0A48D00C10A6F /* ASViewController.m in Sources */,
 				495486FC1DD0B24D00C10A6F /* ASDownloadManager.m in Sources */,
 				495487061DD0E30700C10A6F /* ASStationTableViewCell.m in Sources */,
+				B1845E2F1DD309B600D34ACA /* ASStationResponse.m in Sources */,
 				495486FF1DD0B70D00C10A6F /* ASStation.m in Sources */,
-				495487031DD0BBCC00C10A6F /* ASWeatherHistory.m in Sources */,
+				B1845E321DD312FF00D34ACA /* ASTextViewController.m in Sources */,
 				495486C71DD0A48D00C10A6F /* AppDelegate.m in Sources */,
 				495486C41DD0A48D00C10A6F /* main.m in Sources */,
 			);
@@ -559,6 +554,9 @@
 			baseConfigurationReference = B3FA80E63E5588D57E4EC711 /* Pods-Weather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AS.Weather;
@@ -571,6 +569,9 @@
 			baseConfigurationReference = 23B7B94DB4A6AF7AABA903DB /* Pods-Weather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AS.Weather;

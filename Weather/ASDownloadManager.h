@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ASStation.h"
-#import "ASWeatherHistory.h"
+#import "ASStationResponse.h"
 
-typedef void (^StationFetchCompletion)(NSArray<ASStation *> *);
-typedef void (^WeatherHistoryFetchCompletion)(NSArray<ASWeatherHistory *> *);
+typedef void (^StationFetchCompletion)(ASStationResponse *);
+typedef void (^WeatherHistoryFetchCompletion)(NSString *);
 
 
 @interface ASDownloadManager : NSObject
 
 + (void)fetchAllStations:(StationFetchCompletion)handler;
-//+ (void)fetchWeatherHistoryInfo:(ASStation *)station withHandler:(WeatherHistoryFetchCompletion)handler;
++ (void)fetchWeatherHistoryInfo:(NSString *)stationNamen withHandler:(WeatherHistoryFetchCompletion)handler;
 
 @end
