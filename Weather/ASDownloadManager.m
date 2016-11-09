@@ -33,10 +33,6 @@ NSString * const weatherBaseURL = @"http://www.metoffice.gov.uk/pub/data/weather
     }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
              NSLog(@"Error : %@", error.localizedDescription);
-//             UIAlertController * alert = [UIAlertController
-//                                          alertControllerWithTitle:@"Title"
-//                                          message:@"Message"
-//                                          preferredStyle:UIAlertControllerStyleAlert];
              handler(nil);
          }];
 }
@@ -63,9 +59,5 @@ NSString * const weatherBaseURL = @"http://www.metoffice.gov.uk/pub/data/weather
     
     [downloadTask resume];
 }
-
-
-
-
 
 @end
