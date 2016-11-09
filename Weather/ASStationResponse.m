@@ -1,3 +1,12 @@
+//
+//  ASStationTableViewCell.m
+//  Weather
+//
+//  Created by Andrew Soroka on 11/7/16.
+//  Copyright © 2016 Andrew Soroka. All rights reserved.
+//
+
+
 #import "ASStationResponse.h"
 
 @implementation ASStationResponse
